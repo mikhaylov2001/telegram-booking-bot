@@ -13,7 +13,8 @@ public class Main {
         String username = env("BOT_USERNAME");
         long adminId = Long.parseLong(System.getenv().getOrDefault("ADMIN_ID", "0"));
 
-        Database db = new Database("bookings.db");
+        String dbUrl = env("DATABASE_URL");
+        Database db = new Database(dbUrl);
         db.init();
 
         TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
